@@ -1,0 +1,76 @@
+.home { overflow: hidden; }
+
+/* HERO */
+.hero { position: relative; padding: var(--space-12) 0 var(--space-16); background: var(--carbon); background-size: 20px 20px; }
+.hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7,8,10,0.4), var(--bg-primary) 98%); pointer-events: none; }
+.heroGlow { position: absolute; width: 700px; height: 700px; right: -150px; top: -120px; background: radial-gradient(circle, rgba(255,34,54,0.28), transparent 65%); filter: blur(30px); }
+.heroGrid { position: relative; z-index: 2; display: grid; gap: var(--space-12); align-items: center; }
+@media (min-width: 960px) { .heroGrid { grid-template-columns: 1.05fr 1fr; min-height: 640px; } }
+
+.heroContent { display: flex; flex-direction: column; gap: var(--space-6); align-items: flex-start; }
+.heroTitle { text-shadow: 0 4px 30px rgba(0,0,0,0.6); }
+.redText { color: var(--accent-red); }
+.heroSubtitle { color: var(--text-secondary); font-size: 1.1rem; max-width: 470px; }
+.heroActions { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+
+/* dashboard gauges */
+.dash { display: flex; gap: var(--space-6); margin-top: var(--space-4); padding-top: var(--space-6); border-top: 1px solid var(--border-light); width: 100%; }
+.dashItem { display: flex; flex-direction: column; }
+.dashValue { font-family: var(--font-display); font-weight: 700; font-size: 2.2rem; line-height: 1; }
+.dashLabel { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); margin-top: 4px; }
+
+/* stage */
+.heroStage { position: relative; height: 480px; display: flex; align-items: center; justify-content: center; }
+@media (min-width: 640px) { .heroStage { height: 560px; } }
+.ring { position: absolute; width: 440px; height: 440px; border-radius: 50%; border: 2px dashed rgba(255,34,54,0.4); animation: spin 40s linear infinite; }
+.ring::after { content: ''; position: absolute; inset: 28px; border-radius: 50%; border: 1px solid var(--border-light); }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.stageCard {
+  position: absolute; background: #0b0d10; border: 1px solid var(--border-focus); border-radius: 12px; overflow: hidden;
+  box-shadow: 0 30px 60px -15px rgba(0,0,0,0.9); transition: transform var(--transition-slow);
+}
+.stageCard img { width: 100%; height: 100%; object-fit: contain; background: radial-gradient(ellipse at 50% 30%, #262b33, #0b0d10 80%); }
+.stageMain { width: min(78%, 330px); aspect-ratio: 4 / 3; z-index: 3; animation: float 6s ease-in-out infinite; box-shadow: 0 30px 70px -10px var(--accent-glow); }
+.stageMain:hover { transform: scale(1.04); }
+.stageLeft { width: 38%; max-width: 190px; aspect-ratio: 3 / 4; left: 0; bottom: 30px; transform: rotate(-8deg); z-index: 2; }
+.stageRight { width: 38%; max-width: 190px; aspect-ratio: 3 / 4; right: 0; top: 20px; transform: rotate(7deg); z-index: 2; }
+.stageLeft:hover { transform: rotate(-3deg) translateY(-6px); }
+.stageRight:hover { transform: rotate(3deg) translateY(-6px); }
+@keyframes float { 0%, 100% { translate: 0 0; } 50% { translate: 0 -12px; } }
+.stageTag { position: absolute; bottom: 10px; right: 10px; background: var(--accent-red); font-family: var(--font-display); font-weight: 700; padding: 2px 12px; border-radius: 4px; font-size: 1.1rem; }
+
+/* MARQUEE */
+.marquee { background: var(--accent-red); color: #fff; overflow: hidden; white-space: nowrap; transform: skewY(-1.2deg); margin: var(--space-4) 0; }
+.marqueeTrack { display: inline-block; padding: 0.7rem 0; animation: scroll 28s linear infinite; font-family: var(--font-display); font-style: italic; font-weight: 700; font-size: 1.3rem; letter-spacing: 0.15em; }
+.marqueeTrack span { display: inline-block; }
+.marqueeTrack i { display: inline-block; width: 8px; height: 8px; background: #fff; transform: skewX(-20deg); margin: 0 1.4rem; vertical-align: middle; }
+@keyframes scroll { to { transform: translateX(-50%); } }
+
+/* SECTIONS */
+.sectionHeader { display: flex; flex-direction: column; gap: var(--space-2); margin-bottom: var(--space-8); }
+
+.collectionGrid { display: grid; gap: var(--space-4); grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 900px) { .collectionGrid { grid-template-columns: repeat(4, 1fr); } }
+.collectionCard { position: relative; aspect-ratio: 3 / 4; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border-light); background: #0b0d10; }
+.collectionCard img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s cubic-bezier(.2,.7,.2,1); }
+.collectionCard:hover img { transform: scale(1.08); }
+.collectionCard::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(7,8,10,0.95)); }
+.collectionNo { position: absolute; top: 12px; left: 14px; z-index: 2; font-family: var(--font-display); font-style: italic; font-weight: 700; font-size: 1.6rem; color: rgba(255,255,255,0.85); }
+.collectionInfo { position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; padding: var(--space-4); display: flex; flex-direction: column; }
+.collectionInfo h3 { font-family: var(--font-display); text-transform: uppercase; font-size: 1.4rem; line-height: 1.1; }
+.exploreLink { color: var(--accent-red); font-family: var(--font-display); font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; font-size: 0.85rem; transition: padding var(--transition-fast); }
+.collectionCard:hover .exploreLink { padding-left: 6px; }
+
+.productGrid { display: grid; gap: var(--space-4); grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 900px) { .productGrid { grid-template-columns: repeat(4, 1fr); gap: var(--space-6); } }
+.centerAction { display: flex; justify-content: center; margin-top: var(--space-12); }
+
+/* SPECS */
+.specs { background: var(--bg-secondary); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); padding: var(--space-12) 0; }
+.specGrid { display: grid; gap: var(--space-8); grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 900px) { .specGrid { grid-template-columns: repeat(4, 1fr); } }
+.spec { display: flex; flex-direction: column; gap: var(--space-2); }
+.spec svg { color: var(--accent-red); }
+.spec h4 { font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.1em; font-size: 1.15rem; }
+.spec p { color: var(--text-secondary); font-size: 0.9rem; }

@@ -1,0 +1,67 @@
+.header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(7, 8, 10, 0.55);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border-light);
+  transition: background var(--transition-normal);
+}
+.header::after {
+  content: ''; position: absolute; left: 0; bottom: -1px; height: 2px; width: 0;
+  background: linear-gradient(90deg, var(--accent-red), transparent);
+  transition: width 0.6s ease;
+}
+.scrolled { background: rgba(7, 8, 10, 0.92); }
+.scrolled::after { width: 100%; }
+
+.headerContainer { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+
+.logo {
+  font-family: var(--font-display); font-weight: 700; font-style: italic;
+  font-size: 1.7rem; letter-spacing: 0.08em; display: flex; align-items: center; gap: 0.5rem;
+}
+.logo::before {
+  content: ''; width: 12px; height: 26px; background: var(--accent-red);
+  transform: skewX(-18deg); box-shadow: 8px 0 0 -2px #fff;
+  margin-right: 6px;
+}
+
+.nav { display: none; gap: var(--space-8); }
+.navLink {
+  font-family: var(--font-display); font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.14em; font-size: 0.95rem; color: var(--text-secondary); position: relative; padding: 4px 0;
+}
+.navLink::after {
+  content: ''; position: absolute; left: 0; bottom: -2px; height: 2px; width: 0;
+  background: var(--accent-red); transition: width var(--transition-normal);
+}
+.navLink:hover { color: #fff; }
+.navLink:hover::after { width: 100%; }
+
+.actions { display: flex; align-items: center; gap: var(--space-2); }
+.actionBtn, .cartBtn {
+  width: 42px; height: 42px; display: grid; place-items: center; border-radius: 50%;
+  position: relative; transition: background var(--transition-fast);
+}
+.actionBtn:hover, .cartBtn:hover { background: rgba(255,255,255,0.1); }
+.cartBadge {
+  position: absolute; top: 2px; right: 0; min-width: 18px; height: 18px; padding: 0 4px;
+  border-radius: 9px; background: var(--accent-red); font-size: 0.7rem; font-weight: 600;
+  display: grid; place-items: center; box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.mobileMenuBtn { display: grid; place-items: center; width: 42px; height: 42px; }
+
+/* mobile nav */
+.navOpen {
+  display: flex; flex-direction: column; position: absolute; top: 72px; left: 0; right: 0;
+  background: rgba(7, 8, 10, 0.97); padding: var(--space-6); gap: var(--space-4);
+  border-bottom: 1px solid var(--border-light);
+}
+
+@media (min-width: 900px) {
+  .mobileMenuBtn { display: none; }
+  .nav { display: flex; }
+}
+@media (max-width: 899px) {
+  .headerContainer { position: relative; }
+}

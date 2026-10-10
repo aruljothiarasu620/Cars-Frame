@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Rajdhani:wght@500;600;700&display=swap');
+
+:root {
+  --bg-primary: #07080a;
+  --bg-secondary: #0d0f12;
+  --bg-card: #12151a;
+  --bg-elevated: #181c22;
+
+  --text-primary: #f4f5f7;
+  --text-secondary: #a6adb8;
+  --text-muted: #6b7380;
+
+  --accent-red: #ff2236;
+  --accent-red-hover: #e0101f;
+  --accent-glow: rgba(255, 34, 54, 0.35);
+  --accent-silver: #cfd3da;
+
+  --border-light: rgba(255, 255, 255, 0.08);
+  --border-focus: rgba(255, 255, 255, 0.22);
+
+  --font-family: 'Outfit', sans-serif;
+  --font-display: 'Rajdhani', 'Outfit', sans-serif;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+
+  --radius: 10px;
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* carbon-fibre weave */
+  --carbon:
+    linear-gradient(27deg, #0b0d10 5px, transparent 5px) 0 5px,
+    linear-gradient(207deg, #0b0d10 5px, transparent 5px) 10px 0,
+    linear-gradient(27deg, #101318 5px, transparent 5px) 0 10px,
+    linear-gradient(207deg, #101318 5px, transparent 5px) 10px 5px,
+    linear-gradient(90deg, #0d0f12 10px, transparent 10px),
+    linear-gradient(#0f1216 25%, #0c0e11 25%, #0c0e11 50%, transparent 50%, transparent 75%, #12151a 75%, #12151a);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; transition: color var(--transition-fast); }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+img { max-width: 100%; display: block; }
+ul { list-style: none; }
+
+::selection { background: var(--accent-red); color: #fff; }
+
+/* Typography */
+.h1, .h2, .h3 {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.h1 { font-size: clamp(2.6rem, 6vw, 5rem); font-weight: 700; line-height: 1; font-style: italic; }
+.h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; line-height: 1.05; font-style: italic; }
+.h3 { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 600; }
+.text-secondary { color: var(--text-secondary); }
+.text-small { font-size: 0.875rem; }
+
+/* Buttons — slanted like a racing livery */
+.btn-primary, .btn-secondary, .btn-whatsapp {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.8rem 1.8rem;
+  clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+}
+.btn-primary { background: var(--accent-red); color: #fff; }
+.btn-primary:hover { background: var(--accent-red-hover); transform: translateY(-2px); filter: drop-shadow(0 6px 14px var(--accent-glow)); }
+
+.btn-secondary { background: rgba(255,255,255,0.08); color: var(--text-primary); }
+.btn-secondary:hover { background: rgba(255,255,255,0.16); transform: translateY(-2px); }
+
+.btn-whatsapp { background: #25d366; color: #05140a; width: 100%; }
+.btn-whatsapp:hover { background: #3be67b; transform: translateY(-2px); }
+
+/* Layout */
+.container { max-width: 1280px; margin: 0 auto; padding: 0 var(--space-4); }
+@media (min-width: 768px) { .container { padding: 0 var(--space-8); } }
+
+.section-spacing { padding: var(--space-16) 0; }
+@media (min-width: 768px) { .section-spacing { padding: var(--space-24) 0; } }
+
+/* Shared "racing stripe" eyebrow */
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  font-family: var(--font-display); font-weight: 600; letter-spacing: 0.3em;
+  text-transform: uppercase; font-size: 0.85rem; color: var(--accent-red);
+}
+.eyebrow::before { content: ''; width: 34px; height: 3px; background: var(--accent-red); transform: skewX(-30deg); }
